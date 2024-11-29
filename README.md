@@ -83,13 +83,27 @@ Educativo y de Aprendizaje Personal
     ]
 
 11. Migramos la base de datos por defecto que tiene django
-
     ```bash
     python manage.py migrate
 
 12. Creamos el super usuario
-
     ```bash
     python manage.py createsuperuser
 
-13.    
+13. Vamos a ir al principal/models.py
+
+    ```bash
+    from django.db import models
+
+    # Create your models here.
+    class Estudiantes(models.model):
+        nombre = models.CharField(max_length=50)
+        apellido = models.CharField(max_length=50)
+        edad = models.IntegerField()
+        correo = models.EmailField(unique=True)
+        fecha_registro = models.DateField(auto_now=True)
+        
+        def __str__(self):
+            return f'{self.nombre} {self.apellido}'
+
+
